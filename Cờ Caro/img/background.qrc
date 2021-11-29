@@ -1,0 +1,18 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>black.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>white.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>co-caro-background.png</file>
+  </qresource>
+  <qresource prefix="newPrefix">
+    <file>white.png</file>
+  </qresource>
+  <qresource/>
+  <qresource prefix="newPrefix">
+    <file>hinhnen.jpg</file>
+  </qresource>
+</RCC>

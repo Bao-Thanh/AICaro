@@ -13,7 +13,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(877, 574)
-        MainWindow.setStyleSheet("background-color: rgb(0, 255, 255);")
+        MainWindow.setStyleSheet("background-color: rgb(253, 209, 171);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(10, 20, 481, 471))
-        self.label.setStyleSheet("border-image: url(:/background /co-caro-background.png);")
+        self.label.setStyleSheet("border-image: url(:./background /co-caro-background.png);")
         self.label.setText("")
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
         font.setPointSize(15)
         self.pushButton.setFont(font)
         self.pushButton.setAutoFillBackground(False)
-        self.pushButton.setStyleSheet("background-color: rgb(255, 0, 0);")
+        self.pushButton.setStyleSheet("background-color: rgb(0, 185, 255);")
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(start)
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
@@ -93,11 +93,11 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "PLAY"))
-        self.pushButton_2.setText(_translate("MainWindow", "CÁCH CHƠI"))
-        self.pushButton_3.setText(_translate("MainWindow", "NHÓM TÁC GIẢ"))
-        self.label_5.setText(_translate("MainWindow", "         Chọn quân"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "GAME CARO"))
+        self.pushButton.setText(_translate("MainWindow", "PLAY 🎮"))
+        self.pushButton_2.setText(_translate("MainWindow", " CÁCH CHƠI ⁉ "))
+        self.pushButton_3.setText(_translate("MainWindow", "NHÓM TÁC GIẢ🖋"))
+        self.label_5.setText(_translate("MainWindow", "   ⚪ Chọn quân ⚫"))
 
 import turtle
 import random
@@ -131,7 +131,7 @@ def is_win(board):
     if 5 in black and black[5] == 1:
         return 'Black won'
     elif 5 in white and white[5] == 1:
-        return 'White won'
+        return 'Red won'
 
     if sum(black.values()) == black[-1] and sum(white.values()) == white[-1] or possible_moves(board) == []:
         return 'Draw'
@@ -421,7 +421,7 @@ def click(x, y):
         move_history.append((x, y))
 
         game_res = is_win(board)
-        if game_res in ["White won", "Black won", "Draw"]:
+        if game_res in ["Red won", "Black won", "Draw"]:
             root = tk.Tk()
             MsgBox = tk.messagebox.askquestion(
                 title='Thông báo',
@@ -440,7 +440,7 @@ def click(x, y):
         move_history.append((ax, ay))
 
         game_res = is_win(board)
-        if game_res in ["White won", "Black won", "Draw"]:
+        if game_res in ["Red won", "Black won", "Draw"]:
             root = tk.Tk()
             MsgBox = tk.messagebox.askquestion(
                 title='Thông báo',
@@ -464,11 +464,11 @@ def initialize(size):
     screen.onclick(click)
     screen.setup(screen.screensize()[1] * 2, screen.screensize()[1] * 2)
     screen.setworldcoordinates(-1, size, size, -1)
-    screen.bgcolor('orange')
+    screen.bgcolor('white')
     screen.tracer(500)
 
     colors = {'w': turtle.Turtle(), 'b': turtle.Turtle(), 'g': turtle.Turtle()}
-    colors['w'].color('white')
+    colors['w'].color('red')
     colors['b'].color('black')
 
     for key in colors:
@@ -529,7 +529,7 @@ def draw_stone(x, y, colturtle):
     colturtle.goto(x, y - 0.3)
     colturtle.pendown()
     colturtle.begin_fill()
-    colturtle.circle(0.3)
+    colturtle.circle(0.4)
     colturtle.end_fill()
     colturtle.penup()
 

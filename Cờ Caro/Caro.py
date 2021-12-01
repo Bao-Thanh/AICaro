@@ -2,13 +2,27 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import tkinter as tk
 from tkinter import messagebox
 import hinh
+from nhom_tacgia import *
+from guide import *
+import turtle
+import random
 
+# global move_history
 global move_history
 global size_board
-global col_com
-global col_play
+
 
 class Ui_MainWindow(object):
+    def nhomtacgia(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow1()
+        self.ui.setup(self.window)
+        self.window.show()
+    def guide(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow2()
+        self.ui.setup2(self.window)
+        self.window.show()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(877, 574)
@@ -25,7 +39,7 @@ class Ui_MainWindow(object):
         self.label.setText("")
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(580, 60, 161, 71))
+        self.pushButton.setGeometry(QtCore.QRect(580, 100, 161, 71))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(15)
@@ -35,7 +49,7 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(start)
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(580, 140, 161, 71))
+        self.pushButton_2.setGeometry(QtCore.QRect(580, 210, 161, 71))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(15)
@@ -43,8 +57,9 @@ class Ui_MainWindow(object):
         self.pushButton_2.setAutoFillBackground(False)
         self.pushButton_2.setStyleSheet("background-color: rgb(255, 0, 0);")
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.clicked.connect(self.guide)
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(560, 400, 211, 71))
+        self.pushButton_3.setGeometry(QtCore.QRect(560, 320, 211, 71))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(15)
@@ -52,36 +67,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.setAutoFillBackground(False)
         self.pushButton_3.setStyleSheet("background-color: rgb(255, 0, 0);")
         self.pushButton_3.setObjectName("pushButton_3")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(570, 270, 71, 61))
-        self.label_3.setStyleSheet("border-image: url(:/quanco/img/white.png);")
-        self.label_3.setText("")
-        self.label_3.setObjectName("label_3")
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(670, 270, 71, 61))
-        self.label_4.setStyleSheet("border-image: url(:/quanco/img/black.png);")
-        self.label_4.setText("")
-        self.label_4.setObjectName("label_4")
-        self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(550, 230, 221, 31))
-        font = QtGui.QFont()
-        font.setFamily("Times New Roman")
-        font.setPointSize(15)
-        self.label_5.setFont(font)
-        self.label_5.setStyleSheet("background-color: rgb(255, 0, 0);")
-        self.label_5.setObjectName("label_5")
-        self.checkBoxW = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBoxW.setGeometry(QtCore.QRect(600, 350, 71, 20))
-        self.checkBoxW.setText("")
-        self.checkBoxW.setObjectName("checkBoxW")
-
-        self.checkBoxW.clicked.connect(white)
-
-        self.checkBoxB = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBoxB.setGeometry(QtCore.QRect(700, 350, 71, 20))
-        self.checkBoxB.setText("")
-        self.checkBoxB.clicked.connect(black)
-
+        self.pushButton_3.clicked.connect(self.nhomtacgia)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 877, 26))
@@ -100,22 +86,8 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "PLAY 🎮"))
         self.pushButton_2.setText(_translate("MainWindow", " CÁCH CHƠI ⁉ "))
         self.pushButton_3.setText(_translate("MainWindow", "NHÓM TÁC GIẢ🖋"))
-        self.label_5.setText(_translate("MainWindow", "   ⚪ Chọn quân ⚫"))
 
-import turtle
-import random
 
-global move_history
-
-def white():
-    col_play = 'white'
-    col_com = 'black'
-    print(col_play)
-
-def black():
-    col_play = 'black'
-    col_com = 'white'
-    print(col_play)
 
 def make_empty_board(sz):
     board = []
@@ -142,7 +114,7 @@ def is_win(board):
     if 5 in black and black[5] == 1:
         return 'Black won'
     elif 5 in white and white[5] == 1:
-        return 'Red won'
+        return 'White won'
 
     if sum(black.values()) == black[-1] and sum(white.values()) == white[-1] or possible_moves(board) == []:
         return 'Draw'
@@ -432,7 +404,7 @@ def click(x, y):
         move_history.append((x, y))
 
         game_res = is_win(board)
-        if game_res in ["Red won", "Black won", "Draw"]:
+        if game_res in ["White won", "Black won", "Draw"]:
             root = tk.Tk()
             MsgBox = tk.messagebox.askquestion(
                 title='Thông báo',
@@ -440,16 +412,10 @@ def click(x, y):
             )
             root.destroy()
             if MsgBox == 'yes':
-                turtle.exitonclick()
-            else:
-                turtle.exitonclick()
-                # import sys
-                # app = QtWidgets.QApplication(sys.argv)
-                # MainWindow = QtWidgets.QMainWindow()
-                # ui = Ui_MainWindow()
-                # ui.setupUi(MainWindow)
-                # MainWindow.show()
-                # sys.exit(app.exec_())
+                # turtle.exitonclick()
+                root.mainloop()
+            elif MsgBox == 'no':
+                root.mainloop()
             win = True
             return
 
@@ -460,7 +426,7 @@ def click(x, y):
         move_history.append((ax, ay))
 
         game_res = is_win(board)
-        if game_res in ["Red won", "Black won", "Draw"]:
+        if game_res in ["White won", "Black won", "Draw"]:
             root = tk.Tk()
             MsgBox = tk.messagebox.askquestion(
                 title='Thông báo',
@@ -468,16 +434,9 @@ def click(x, y):
             )
             root.destroy()
             if MsgBox == 'yes':
-                turtle.exitonclick()
-            else:
-                turtle.exitonclick()
-                # import sys
-                # app = QtWidgets.QApplication(sys.argv)
-                # MainWindow = QtWidgets.QMainWindow()
-                # ui = Ui_MainWindow()
-                # ui.setupUi(MainWindow)
-                # MainWindow.show()
-                # sys.exit(app.exec_())
+                root.mainloop()
+            elif MsgBox == 'no':
+                root.mainloop()
             win = True
             return
 
@@ -555,7 +514,7 @@ def getindexposition(x, y):
 
 
 def draw_stone(x, y, colturtle):
-    colturtle.goto(x - 0.5, y + 0.1)
+    colturtle.goto(x, y - 0.4)
     colturtle.pendown()
     colturtle.begin_fill()
     colturtle.circle(0.45)
@@ -564,9 +523,8 @@ def draw_stone(x, y, colturtle):
 
 
 def start():
-    initialize(20)
-    print(col_com)
-    # MainWindow.hide()
+    initialize(30)
+    turtle.bye()
 
 if __name__ == "__main__":
     import sys

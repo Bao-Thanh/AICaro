@@ -50,7 +50,7 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>60</y>
+      <y>100</y>
       <width>161</width>
       <height>71</height>
      </rect>
@@ -75,7 +75,7 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>140</y>
+      <y>210</y>
       <width>161</width>
       <height>71</height>
      </rect>
@@ -100,7 +100,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>400</y>
+      <y>320</y>
       <width>211</width>
       <height>71</height>
      </rect>
@@ -119,86 +119,6 @@
     </property>
     <property name="text">
      <string>NHÓM TÁC GIẢ</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>270</y>
-      <width>71</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: url(:/quanco/img/white.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>270</y>
-      <width>71</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-image: url(:/quanco/img/black.png);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>230</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times New Roman</family>
-      <pointsize>15</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>         Chọn quân</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBoxW">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>350</y>
-      <width>71</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBoxB">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>350</y>
-      <width>71</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
     </property>
    </widget>
   </widget>

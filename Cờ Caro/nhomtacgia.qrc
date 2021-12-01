@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="hcmute">
+    <file>img/hcmute.png</file>
+  </qresource>
+  <qresource prefix="9">
+    <file>img/chin.jpg</file>
+  </qresource>
+</RCC>

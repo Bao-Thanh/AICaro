@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="background">
+    <file>img/co-caro-background.png</file>
+  </qresource>
+  <qresource prefix="quanco">
+    <file>img/white.png</file>
+    <file>img/black.png</file>
+  </qresource>
+</RCC>

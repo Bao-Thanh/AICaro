@@ -40,7 +40,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/background /co-caro-background.png);</string>
+     <string notr="true">border-image: url(:/background/img/co-caro-background.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -131,7 +131,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/background /white.png);</string>
+     <string notr="true">border-image: url(:/quanco/img/white.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -147,7 +147,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/background /black.png);</string>
+     <string notr="true">border-image: url(:/quanco/img/black.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -178,7 +178,7 @@
    <widget class="QCheckBox" name="checkBoxW">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>600</x>
       <y>350</y>
       <width>71</width>
       <height>20</height>
@@ -215,7 +215,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="img/background.qrc"/>
+  <include location="hinh.qrc"/>
  </resources>
  <connections/>
 </ui>

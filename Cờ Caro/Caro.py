@@ -1,13 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import turtle
-import random
-import time
 import tkinter as tk
-from tkinter import ttk
 from tkinter import messagebox
+import hinh
 
 global move_history
 global size_board
+global col_com
+global col_play
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -22,7 +21,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(10, 20, 481, 471))
-        self.label.setStyleSheet("border-image: url(:./background /co-caro-background.png);")
+        self.label.setStyleSheet("border-image: url(:/background/img/co-caro-background.png);")
         self.label.setText("")
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -55,12 +54,12 @@ class Ui_MainWindow(object):
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(570, 270, 71, 61))
-        self.label_3.setStyleSheet("border-image: url(:/background /white.png);")
+        self.label_3.setStyleSheet("border-image: url(:/quanco/img/white.png);")
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(670, 270, 71, 61))
-        self.label_4.setStyleSheet("border-image: url(:/background /black.png);")
+        self.label_4.setStyleSheet("border-image: url(:/quanco/img/black.png);")
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
@@ -72,13 +71,17 @@ class Ui_MainWindow(object):
         self.label_5.setStyleSheet("background-color: rgb(255, 0, 0);")
         self.label_5.setObjectName("label_5")
         self.checkBoxW = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBoxW.setGeometry(QtCore.QRect(590, 350, 71, 20))
+        self.checkBoxW.setGeometry(QtCore.QRect(600, 350, 71, 20))
         self.checkBoxW.setText("")
         self.checkBoxW.setObjectName("checkBoxW")
+
+        self.checkBoxW.clicked.connect(white)
+
         self.checkBoxB = QtWidgets.QCheckBox(self.centralwidget)
         self.checkBoxB.setGeometry(QtCore.QRect(700, 350, 71, 20))
         self.checkBoxB.setText("")
-        self.checkBoxB.setObjectName("checkBoxB")
+        self.checkBoxB.clicked.connect(black)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 877, 26))
@@ -101,10 +104,18 @@ class Ui_MainWindow(object):
 
 import turtle
 import random
-import time
 
 global move_history
 
+def white():
+    col_play = 'white'
+    col_com = 'black'
+    print(col_play)
+
+def black():
+    col_play = 'black'
+    col_com = 'white'
+    print(col_play)
 
 def make_empty_board(sz):
     board = []
@@ -430,6 +441,15 @@ def click(x, y):
             root.destroy()
             if MsgBox == 'yes':
                 turtle.exitonclick()
+            else:
+                turtle.exitonclick()
+                # import sys
+                # app = QtWidgets.QApplication(sys.argv)
+                # MainWindow = QtWidgets.QMainWindow()
+                # ui = Ui_MainWindow()
+                # ui.setupUi(MainWindow)
+                # MainWindow.show()
+                # sys.exit(app.exec_())
             win = True
             return
 
@@ -449,6 +469,15 @@ def click(x, y):
             root.destroy()
             if MsgBox == 'yes':
                 turtle.exitonclick()
+            else:
+                turtle.exitonclick()
+                # import sys
+                # app = QtWidgets.QApplication(sys.argv)
+                # MainWindow = QtWidgets.QMainWindow()
+                # ui = Ui_MainWindow()
+                # ui.setupUi(MainWindow)
+                # MainWindow.show()
+                # sys.exit(app.exec_())
             win = True
             return
 
@@ -464,11 +493,11 @@ def initialize(size):
     screen.onclick(click)
     screen.setup(screen.screensize()[1] * 2, screen.screensize()[1] * 2)
     screen.setworldcoordinates(-1, size, size, -1)
-    screen.bgcolor('white')
+    screen.bgcolor('orange')
     screen.tracer(500)
 
     colors = {'w': turtle.Turtle(), 'b': turtle.Turtle(), 'g': turtle.Turtle()}
-    colors['w'].color('red')
+    colors['w'].color('white')
     colors['b'].color('black')
 
     for key in colors:
@@ -526,17 +555,18 @@ def getindexposition(x, y):
 
 
 def draw_stone(x, y, colturtle):
-    colturtle.goto(x, y - 0.3)
+    colturtle.goto(x - 0.5, y + 0.1)
     colturtle.pendown()
     colturtle.begin_fill()
-    colturtle.circle(0.4)
+    colturtle.circle(0.45)
     colturtle.end_fill()
     colturtle.penup()
 
 
 def start():
-    initialize(30)
-    MainWindow.hide()
+    initialize(20)
+    print(col_com)
+    # MainWindow.hide()
 
 if __name__ == "__main__":
     import sys
